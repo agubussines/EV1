@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class BiblioAppConfig(AppConfig):
-    name = 'biblio_app'
+class VetAppConfig(AppConfig):
+    name = 'Vet_app'
