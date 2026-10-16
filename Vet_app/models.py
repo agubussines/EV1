@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
     correo = models.EmailField(unique=True)
@@ -31,3 +32,5 @@ class Mascota(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.especie})"
+=======
+>>>>>>> 96dd9e8b874e2b731393b3b765924d45f58a6fd2
