@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{% if object %}Editar Mascota{% else %}Nueva Mascota{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if object %}Editar Mascota: {{ object.nombre }}{% else %}Registrar Mascota{% endif %}</h1>
+<hr>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+            <div class="text-danger small">{{ field.errors }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{% url 'mascota_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

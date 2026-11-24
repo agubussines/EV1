@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle de {{ mascota.nombre }}{% endblock %}
+
+{% block content %}
+<h1>{{ mascota.nombre }}</h1>
+<hr>
+<ul class="list-group mb-3">
+    <li class="list-group-item"><strong>Dueño:</strong> {{ mascota.usuario.nombre }} ({{ mascota.usuario.correo }})</li>
+    <li class="list-group-item"><strong>Especie:</strong> {{ mascota.especie }}</li>
+    <li class="list-group-item"><strong>Raza:</strong> {{ mascota.raza|default:"-" }}</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ mascota.edad }} años</li>
+    <li class="list-group-item"><strong>Peso:</strong> {{ mascota.peso }} kg</li>
+    <li class="list-group-item"><strong>Color:</strong> {{ mascota.color }}</li>
+    <li class="list-group-item"><strong>Sexo:</strong> {{ mascota.sexo }}</li>
+    <li class="list-group-item"><strong>Fecha de nacimiento:</strong> {{ mascota.fechaNacimiento }}</li>
+    <li class="list-group-item"><strong>Observaciones:</strong> {{ mascota.observaciones|default:"Sin observaciones" }}</li>
+</ul>
+
+<a href="{% url 'mascota_update' mascota.pk %}" class="btn btn-warning">Editar</a>
+<a href="{% url 'mascota_delete' mascota.pk %}" class="btn btn-danger">Eliminar</a>
+<a href="{% url 'mascota_list' %}" class="btn btn-secondary">Volver al listado</a>
+{% endblock %}

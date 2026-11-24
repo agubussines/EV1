@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Mascota{% endblock %}
+
+{% block content %}
+<h1>Confirmar eliminación</h1>
+<p>¿Estás seguro de que deseas eliminar a <strong>{{ mascota.nombre }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a href="{% url 'mascota_detail' mascota.pk %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle de {{ usuario.nombre }}{% endblock %}
+
+{% block content %}
+<h1>{{ usuario.nombre }}</h1>
+<hr>
+<ul class="list-group mb-4">
+    <li class="list-group-item"><strong>Correo:</strong> {{ usuario.correo }}</li>
+    <li class="list-group-item"><strong>Género:</strong> {{ usuario.genero }}</li>
+    <li class="list-group-item"><strong>Nacionalidad:</strong> {{ usuario.nacionalidad }}</li>
+    <li class="list-group-item"><strong>Fecha de nacimiento:</strong> {{ usuario.fechaNacimiento }}</li>
+    <li class="list-group-item">
+        <strong>Dirección:</strong>
+        {{ usuario.calle|default:"-" }} {{ usuario.numero|default:"" }}
+    </li>
+</ul>
+
+<h3>Mascotas registradas</h3>
+<ul class="list-group mb-4">
+    {% for mascota in usuario.mascotas.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>{{ mascota.nombre }}</strong> — {{ mascota.especie }} ({{ mascota.raza|default:"Mestizo" }})</span>
+            <a href="{% url 'mascota_detail' mascota.pk %}" class="btn btn-sm btn-outline-info">Ver mascota</a>
+        </li>
+    {% empty %}
+        <li class="list-group-item text-muted">Este usuario aún no tiene mascotas registradas.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'usuario_update' usuario.pk %}" class="btn btn-warning">Editar</a>
+<a href="{% url 'usuario_delete' usuario.pk %}" class="btn btn-danger">Eliminar</a>
+<a href="{% url 'usuario_list' %}" class="btn btn-secondary">Volver al listado</a>
+{% endblock %}
