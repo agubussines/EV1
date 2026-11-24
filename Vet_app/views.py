@@ -79,7 +79,7 @@ class UsuarioDeleteView(DeleteView):
 # ==========================================
 class MascotaListView(ListView):
     model = Mascota
-    template_name = 'mascotas/mascota_list.html'
+    template_name = 'mascotas/mascotas_list.html'
     context_object_name = 'mascotas'
 
     def get_queryset(self):
